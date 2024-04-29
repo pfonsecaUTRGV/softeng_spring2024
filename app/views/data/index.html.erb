@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Data view</h1>
+
+
+  <table class="table table-striped table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+      <th scope="col">User Id</th>
+      <th scope="col">View student</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @data.each do |datum| %>
+      <tr>
+        
+        <td><%= datum.first_name %></td>
+        <td><%= datum.last_name %></td>
+        <td><%= datum.phone %></td>
+        <td><%= datum.email %></td>
+        <td><%= datum.user_id %></td>
+        <td><%= link_to "Show this datum", datum %></td>
+        <td><%= link_to "Edit", datum %></td>
+        <td><%= link_to "Destroy", datum, method: :delete, data:{confirm: 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+</div>
+
+<%= link_to "New datum", new_datum_path %>
+

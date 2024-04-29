@@ -1,0 +1,51 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Students</h1>
+
+
+<!-- This following code is the scaffold for the db rendering -->
+<!-- <table class="table"> 
+
+  <% @students.each do |student| %>
+    <%= render student %>
+    <p>
+      <%= link_to "Show this student", student %>
+    </p>
+  <% end %>
+</table>-->
+
+
+
+<table class="table table-striped table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Student id</th>
+      <th scope="col">Email</th>
+      <th scope="col">View student</th>
+      <th scope="col">Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <% if student.user == current_user %>
+        <td><%= student.name %></td>
+        <td><%= student.last_name %></td>
+        <td><%= student.id %></td>
+        <td><%= student.email %></td>
+        
+        <td><%= link_to "Show", student, class:"btn btn-outline-secondary" %></td>
+        <td><%= student.user_id %></td>
+        <td><%= link_to "Edit", student %></td>
+        <td><%= link_to "Destroy", student, method: :delete, data:{confirm: 'Are you sure?'} %></td>
+        <%end%>
+      </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+
+<%= link_to "New student", new_student_path, class:"btn btn-secondary"  %>
+
